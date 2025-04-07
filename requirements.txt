@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+git+https://github.com/SonnyLabs/sonnylabs_py.git
