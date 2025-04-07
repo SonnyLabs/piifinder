@@ -19,12 +19,18 @@ load_dotenv()
 
 app = FastAPI()
 
-# Add CORS middleware
+# Add CORS middleware with specific origins
+allowed_origins = [
+    "http://localhost:8000",  # Local development
+    "http://localhost:3000",  # Common frontend port
+    "https://pii-finder-c64c00d500cf.herokuapp.com/",  # Replace with your actual Heroku app URL
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],  # Only allow necessary methods
     allow_headers=["*"],
 )
 
