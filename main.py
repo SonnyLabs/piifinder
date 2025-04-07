@@ -11,6 +11,11 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 import html
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
 
@@ -34,11 +39,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Set up the Jinja2 templates directory
 templates = Jinja2Templates(directory="templates")
 
-# Initialize the SonnyLabs client
+# Initialize the SonnyLabs client with environment variables
 client = SonnyLabsClient(
-    api_token="18e0e9c6-c447-4712-bd52-ec8fd6a5f19e",
-    base_url="https://sonnylabs-service.onrender.com",
-    analysis_id=12,
+    api_token=os.getenv("SONNYLABS_API_TOKEN"),
+    base_url=os.getenv("SONNYLABS_BASE_URL"),
+    analysis_id=int(os.getenv("SONNYLABS_ANALYSIS_ID")),
 )
 
 def sanitize_input(text: str) -> str:
