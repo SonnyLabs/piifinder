@@ -4,7 +4,19 @@
     <title>PII Checker</title>
 </head>
 <body>
-    <h1>Enter Your Text to Check for PII</h1>
+    <h1>SonnyLabs LLM Fixer</h1>
+
+    How do I make sure I am not about to send Personally Identifiable information to users?
+    Its a really bad idea for your website (or chatbot) to start giving out names and Addresses. 
+    
+    Sonny Labs has a tool that will scan your text and highlight any Personally Identifiable information.
+    And I got it working in a few minutes. You can sign up for a free account at https://sonnylabs.com
+    They give you an Api key and an analysis id. You can test it below. 
+    
+    The whole PII checker is a few lines of code. Sonnylabs helps people make sure LLMs are not being sent or returning back
+    information they should not. 
+
+    <h2>Enter Your Text to Check for PII</h2>
     <form action="/analyze" method="post">
         <textarea name="text" rows="10" cols="50" placeholder="Paste your text here..."></textarea><br><br>
         <button type="submit">Check for PII</button>
