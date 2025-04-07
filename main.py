@@ -1,9 +1,13 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from sonnylabs_py import SonnyLabsClient
 
 app = FastAPI()
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Set up the Jinja2 templates directory
 templates = Jinja2Templates(directory="templates")

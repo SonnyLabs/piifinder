@@ -2,24 +2,29 @@
 <html>
 <head>
     <title>Analysis Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Analysis Result</h1>
-    <h2>Your Submitted Text:</h2>
-    <p>{{ text }}</p>
-    
-    {% if pii_results %}
-    <h2>Detected potential PII</h2>
-    <ul>
-        {% for pii in pii_results %}
-            <li>{{ pii.text }} could be a {{ pii.label }}</li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No PII detected.</p>
-    {% endif %}
-    
-    <br>
-    <a href="/">Try Another Text</a>
+    <div class="container">
+        <h1>Analysis Result</h1>
+        
+        <div class="result-container">
+            <h2>Your Submitted Text:</h2>
+            <p>{{ text }}</p>
+            
+            {% if pii_results %}
+            <h2>Detected Potential PII</h2>
+            <ul>
+                {% for pii in pii_results %}
+                    <li>{{ pii.text }} could be a {{ pii.label }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No PII detected.</p>
+            {% endif %}
+        </div>
+        
+        <a href="/">Try Another Text</a>
+    </div>
 </body>
 </html>
